@@ -27,7 +27,10 @@ class Mail:
 class Reset:
     def __init__(self, confirm = False):
         self.confirm = confirm
-        
+
+#以下、データ永続化機構
+import csv
+
 #以下、tkinterのウィンドウ操作
 import tkinter as tk
 import tkinter.ttk as ttk
