@@ -47,30 +47,110 @@ if __name__ == "__main__":
     root.grid_rowconfigure(0, weight=1)
     root.grid_columnconfigure(0, weight=1)
 
-    # 時間割表示画面の作成と設置
-    frame = ttk.Frame(root)
-    frame.grid(row=0, column=0, sticky="nsew", pady=20)
+    # ユーザー情報登録画面の作成と設置
+    frame_userinformation = ttk.Frame(root)
+    frame_userinformation.grid(row=0, column=0, sticky="nsew", pady=20)
     # 各種ウィジェットの作成
-    label1_frame = ttk.Label(frame, text="時間割表示画面")
-    entry1_frame = ttk.Entry(frame)
-    button_change = ttk.Button(frame, text="時間割登録画面に移動", command=lambda: change_app(frame_app))
+    label1_frame = ttk.Label(frame_userinformation, text="ユーザー情報登録画面")
+    entry1_frame = ttk.Entry(frame_userinformation)
+    button_change_frame = ttk.Button(frame_userinformation, text="時間割登録画面に移動", command=lambda: change_app(frame_schedule))
     # 各種ウィジェットの設置
     label1_frame.pack()
     entry1_frame.pack()
-    button_change.pack()
+    button_change_frame.pack()
+
+    # 時間割表示画面の作成と設置
+    frame_schedule = ttk.Frame(root)
+    frame_schedule.grid(row=0, column=0, sticky="nsew", pady=20)
+    # 各種ウィジェットの作成
+    label1_frame = ttk.Label(frame_schedule, text="時間割表示画面")
+    entry1_frame = ttk.Entry(frame_schedule)
+    button1_change = ttk.Button(frame_schedule, text="時間割登録画面に移動", command=lambda: change_app(frame_schedule_registration))
+    entry2_frame = ttk.Entry(frame_schedule)
+    button2_change = ttk.Button(frame_schedule, text="時間割編集画面に移動", command=lambda: change_app(frame_schedule_edit))
+    entry3_frame = ttk.Entry(frame_schedule)
+    button3_change = ttk.Button(frame_schedule, text="システムリセット確認画面に移動", command=lambda: change_app(frame_reset))
+    # 各種ウィジェットの設置
+    label1_frame.pack()
+    entry1_frame.pack()
+    button1_change.pack()
+    entry2_frame.pack()
+    button2_change.pack()
+    entry3_frame.pack()
+    button3_change.pack()
 
     # 時間割登録画面の作成と設置
-    frame_app = ttk.Frame(root)
-    frame_app.grid(row=0, column=0, sticky="nsew", pady=20)
+    frame_schedule_registration = ttk.Frame(root)
+    frame_schedule_registration.grid(row=0, column=0, sticky="nsew", pady=20)
     # 各種ウィジェットの作成
-    label1_frame_app = ttk.Label(frame_app, text="時間割登録画面")
-    entry1_frame_app = ttk.Entry(frame_app)
-    button_change_frame_app = ttk.Button(frame_app, text="時間割表示画面に移動", command=lambda: change_app(frame))
+    label1_frame = ttk.Label(frame_schedule_registration, text="時間割登録画面")
+    entry1_frame = ttk.Entry(frame_schedule_registration)
+    button_change_frame = ttk.Button(frame_schedule_registration, text="時間割表示画面に移動", command=lambda: change_app(frame_schedule))
     # 各種ウィジェットの設置
-    label1_frame_app.pack()
-    entry1_frame_app.pack()
-    button_change_frame_app.pack()
+    label1_frame.pack()
+    entry1_frame.pack()
+    button_change_frame.pack()
+
+    # 時間割編集画面の作成と設置
+    frame_schedule_edit = ttk.Frame(root)
+    frame_schedule_edit.grid(row=0, column=0, sticky="nsew", pady=20)
+    # 各種ウィジェットの作成
+    label1_frame = ttk.Label(frame_schedule_edit, text="時間割編集画面")
+    entry1_frame = ttk.Entry(frame_schedule_edit)
+    button1_change_frame = ttk.Button(frame_schedule_edit, text="時間割表示画面に移動", command=lambda: change_app(frame_schedule))
+    entry2_frame = ttk.Entry(frame_schedule_edit)
+    button2_change_frame = ttk.Button(frame_schedule_edit, text="課題登録画面に移動", command=lambda: change_app(frame_hw_registration))
+    entry3_frame = ttk.Entry(frame_schedule_edit)
+    button3_change_frame = ttk.Button(frame_schedule_edit, text="課題進捗画面に移動", command=lambda: change_app(frame_hw_progress))
+    # 各種ウィジェットの設置
+    label1_frame.pack()
+    entry1_frame.pack()
+    button1_change_frame.pack()
+    entry2_frame.pack()
+    button2_change_frame.pack()
+    entry3_frame.pack()
+    button3_change_frame.pack()
+
+    # 課題登録画面の作成と設置
+    frame_hw_registration = ttk.Frame(root)
+    frame_hw_registration.grid(row=0, column=0, sticky="nsew", pady=20)
+    # 各種ウィジェットの作成
+    label1_frame = ttk.Label(frame_hw_registration, text="課題登録画面")
+    entry1_frame = ttk.Entry(frame_hw_registration)
+    button_change_frame = ttk.Button(frame_hw_registration, text="時間割編集画面に移動", command=lambda: change_app(frame_schedule_edit))
+    # 各種ウィジェットの設置
+    label1_frame.pack()
+    entry1_frame.pack()
+    button_change_frame.pack()
+
+    # 課題進捗画面の作成と設置
+    frame_hw_progress = ttk.Frame(root)
+    frame_hw_progress.grid(row=0, column=0, sticky="nsew", pady=20)
+    # 各種ウィジェットの作成
+    label1_frame = ttk.Label(frame_hw_progress, text="課題進捗画面")
+    entry1_frame = ttk.Entry(frame_hw_progress)
+    button_change_frame = ttk.Button(frame_hw_progress, text="時間割編集画面に移動", command=lambda: change_app(frame_schedule_edit))
+    # 各種ウィジェットの設置
+    label1_frame.pack()
+    entry1_frame.pack()
+    button_change_frame.pack()
+
+    # システムリセット確認画面の作成と設置
+    frame_reset = ttk.Frame(root)
+    frame_reset.grid(row=0, column=0, sticky="nsew", pady=20)
+    # 各種ウィジェットの作成
+    label1_frame = ttk.Label(frame_reset, text="システムリセット確認画面")
+    entry1_frame = ttk.Entry(frame_reset)
+    button_change_frame = ttk.Button(frame_reset, text="時間割表示画面に移動", command=lambda: change_app(frame_schedule))
+    entry2_frame = ttk.Entry(frame_reset)
+    button2_change_frame = ttk.Button(frame_reset, text="ユーザー情報登録画面に移動", command=lambda: change_app(frame_userinformation))
+    # 各種ウィジェットの設置
+    label1_frame.pack()
+    entry1_frame.pack()
+    button_change_frame.pack()
+    entry2_frame.pack()
+    button2_change_frame.pack()
 
     # frameを前面にする
-    frame.tkraise()
+    frame_userinformation.tkraise()
     root.mainloop()
