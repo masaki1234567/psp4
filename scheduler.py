@@ -28,13 +28,46 @@ class Reset:
     def __init__(self, confirm = False):
         self.confirm = confirm
 
-#以下、データ永続化機構
-import csv
-
-#以下、tkinterのウィンドウ操作
+#以下、データ保存機構
 import tkinter as tk
 import tkinter.ttk as ttk
+userdata = "userdata.txt"
+data = "data.csv"
 
+def save_userdata():
+    data = entry_username_frame.get() 
+    with open(userdata, 'r') as f:
+        lines = f.readlines()
+    # 1行目にデータを挿入または置き換える
+    if len(lines) == 0:
+        lines.append(data + '\n')
+    else:
+        lines[0] = data + '\n'
+    # ファイルに書き込む
+    with open(userdata, 'w') as f:
+        f.writelines(lines)
+
+def save_mailaddress():
+    data = entry_mailaddress_frame.get() 
+    with open(userdata, 'r') as f:
+        lines = f.readlines()
+    # 2行目にデータを挿入または置き換える
+    if len(lines) < 2:
+        # 2行目が存在しない場合、新しい行を追加する
+        while len(lines) < 1:
+            lines.append('\n')  # 1行目が存在しない場合の対策
+        lines.append(data + '\n')
+    else:
+        lines[1] = data + '\n'
+    # ファイルに書き込む
+    with open(userdata, 'w') as f:
+        f.writelines(lines)
+
+def save_userdata_mailaddress():
+    save_userdata()
+    save_mailaddress()
+
+#以下、tkinterのウィンドウ操作
 def change_app(window):
     window.tkraise()
 
@@ -52,12 +85,20 @@ if __name__ == "__main__":
     frame_userinformation.grid(row=0, column=0, sticky="nsew", pady=20)
     # 各種ウィジェットの作成
     label1_frame = ttk.Label(frame_userinformation, text="ユーザー情報登録画面")
-    entry1_frame = ttk.Entry(frame_userinformation)
-    button_change_frame = ttk.Button(frame_userinformation, text="時間割登録画面に移動", command=lambda: change_app(frame_schedule))
+    label2_frame = ttk.Label(frame_userinformation, text="名前を入力してください")
+    entry_username_frame = ttk.Entry(frame_userinformation)
+    label3_frame = ttk.Label(frame_userinformation, text="メールアドレスを入力してください")
+    entry_mailaddress_frame = ttk.Entry(frame_userinformation)
+    button1_change_frame = tk.Button(frame_userinformation, text="保存", command=save_userdata_mailaddress)
+    button2_change_frame = ttk.Button(frame_userinformation, text="時間割登録画面に移動", command=lambda: change_app(frame_schedule))
     # 各種ウィジェットの設置
     label1_frame.pack()
-    entry1_frame.pack()
-    button_change_frame.pack()
+    label2_frame.pack()
+    entry_username_frame.pack()
+    label3_frame.pack()
+    entry_mailaddress_frame.pack()
+    button1_change_frame.pack()
+    button2_change_frame.pack()
 
     # 時間割表示画面の作成と設置
     frame_schedule = ttk.Frame(root)
