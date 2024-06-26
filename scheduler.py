@@ -10,6 +10,7 @@ class Schedule:
         self.dayofweek = dayofweek
         self.time = time
         self.time = color
+
 #Homework（課題）クラスは名前、説明文、締め切り、進捗情報を持つ
 class Homework:
     def __init__(self, name, description, deadline, progress):
@@ -28,12 +29,13 @@ class Reset:
     def __init__(self, confirm = False):
         self.confirm = confirm
 
-#以下、データ保存機構
 import tkinter as tk
 import tkinter.ttk as ttk
 userdata = "userdata.txt"
 data = "data.csv"
+progress_color_table = []
 
+#名前の保存
 def save_userdata():
     data = entry_username_frame.get() 
     with open(userdata, 'r') as f:
@@ -47,6 +49,7 @@ def save_userdata():
     with open(userdata, 'w') as f:
         f.writelines(lines)
 
+#メールアドレスの保存
 def save_mailaddress():
     data = entry_mailaddress_frame.get() 
     with open(userdata, 'r') as f:
@@ -63,6 +66,7 @@ def save_mailaddress():
     with open(userdata, 'w') as f:
         f.writelines(lines)
 
+#名前とメールアドレスの保存を一括化
 def save_userdata_mailaddress():
     save_userdata()
     save_mailaddress()
