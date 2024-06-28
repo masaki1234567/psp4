@@ -12,11 +12,11 @@ class Timetable(tk.Tk):
         super().__init__()
         self.title("Timetable")
 
-        days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-        times = ["9:00", "10:00"]
+        days = ["月", "火", "水", "木", "金"]
+        times = ["1", "2", "3", "4", "5", "6"]
 
         # 表の見出しを作成
-        for i, day in enumerate(["Time/Day"] + days):
+        for i, day in enumerate(["時限/曜日"] + days):
             label = tk.Label(self, text=day, relief=tk.RIDGE, width=15, bg="lightgrey")
             label.grid(row=0, column=i, padx=1, pady=1)
 
@@ -35,16 +35,16 @@ class Timetable(tk.Tk):
 if __name__ == "__main__":
     # Scheduleリストの定義
     schedule_list = [
-        Schedule("Math", "Monday", "9:00", "lightblue"),
-        Schedule("Science", "Monday", "10:00", "lightgreen"),
-        Schedule("History", "Tuesday", "9:00", "lightcoral"),
-        Schedule("PE", "Tuesday", "10:00", "lightskyblue"),
-        Schedule("Art", "Wednesday", "9:00", "lightyellow"),
-        Schedule("Music", "Wednesday", "10:00", "lightpink"),
-        Schedule("Math", "Thursday", "9:00", "lightblue"),
-        Schedule("Science", "Thursday", "10:00", "lightgreen"),
-        Schedule("History", "Friday", "9:00", "lightcoral"),
-        Schedule("PE", "Friday", "10:00", "lightskyblue")
+        Schedule("Math", "月", "1", "lightblue"),
+        Schedule("Science", "月", "2", "lightgreen"),
+        Schedule("History", "火", "1", "lightcoral"),
+        Schedule("PE", "火", "2", "lightskyblue"),
+        Schedule("Art", "水", "1", "lightyellow"),
+        Schedule("Music", "水", "2", "lightpink"),
+        Schedule("Math", "木", "1", "lightblue"),
+        Schedule("Science", "木", "2", "lightgreen"),
+        Schedule("History", "金", "1", "lightcoral"),
+        Schedule("PE", "金", "2", "lightskyblue")
     ]
 
     app = Timetable(schedule_list)
