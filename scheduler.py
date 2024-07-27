@@ -11,7 +11,7 @@ class Schedule:
         self.time = time
         self.time = color
 #TimetableクラスはScheduleを表に変換する
-class Timetable(tk.Tk):
+class Timetable():
     def __init__(self, schedules):
         super().__init__()
         self.title("Timetable")
